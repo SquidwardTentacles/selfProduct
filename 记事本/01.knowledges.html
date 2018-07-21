@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: white;
+            color:white;
+            text-shadow: 0 5px 5px red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- class id style href
+            red 是否应用 取决于 isRed的值
+        -->
+        <p v-on:click="sayThis" v-bind:class="{ red: isRed }" :style="pStyle" >{{message}}</p>
+        <input type="text" v-model="inputValue">
+        <p>{{inputValue}}</p>
+    </div>
+</body>
+</html>
+<script src="./lib/vue.js"></script>
+<script>
+    // 写代码
+    let app = new Vue({
+        el:"#app",
+        data:{
+            message:'台风要来啦',
+            inputValue:'',
+            isRed:'红色',
+            pStyle:'font-size:100px;font-weight:700'
+        },
+        methods:{
+            sayThis(){
+                // 打印的是 实例化出来的 Vue对象
+                // 实例化传入的对象 参数
+                // 传入的这个对象中的 各种属性 最终都会 赋值到实例化出来的 vue对象上
+
+                console.log(this);
+            }
+        }
+    })
+</script>
