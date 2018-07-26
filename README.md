@@ -1,5 +1,5 @@
 # selfProduct
-
+````
 # 记事本项目
 
   ## 分析
@@ -65,3 +65,59 @@
         
         浏览器关闭
             数据保存到 localStorage中
+````
+
+····
+# webpack Webpack前端资源打包工具 
+    1.安装  npm install webpack -g 
+    2. 4.x 版本需执行 npm install  webpack-cli -g 	 
+    3. 在当前根目录中创建src文件夹放置需打包的文件（webpack的入口文件夹）
+        并创建一个名为index的js文件 文件内容： document.write("It works.");
+    4.在根目录创建一个dist文件夹与src文件夹同级（dist文件夹作为webpack的出口 放打包后的文件 main.js）
+    5.在根目录下创建一个index.html文件与src文件夹同级 内容
+        <html>
+                <head>
+                        <meta charset="utf-8">
+                </head>
+                <body>
+                        <script type="text/javascript" src="./dist/main.js" charset="utf-8"></script>
+                </body>
+        </html>
+
+    6.在终端打开根目录文件夹 并运行打包命令 （webpack）
+    7.在src文件夹下有多个js文件时 可以在index.js用require(‘文件名’)
+        引入文件不用后缀
+    8.Webpack默认只打包js文件 如需打包其他文件需自行下载组件
+    9.下载css打包    npm install --save-dev style-loader css-loader
+    10.写一个配置文件 webpack.config.js 
+        const path = require('path');
+
+    module.exports = {
+        entry: './src/index.js',
+        output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+        },
+        module: {
+        rules: [
+        {
+            test: /\.css$/,
+        use: [
+            'style-loader',
+            'css-loader'
+            ]
+        }
+        ]
+    }
+    };
+    11.加载图片 npm install --save-dev file-loader
+        {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+            'file-loader'
+            ]
+        }
+
+    12.
+    webpack 根据正则表达式，来确定应该查找哪些文件，并将其提供给指定的 loader。在这种情况下，以 .css 结尾的全部文件，都将被提供给 style-loader 和 css-loader。
+````
